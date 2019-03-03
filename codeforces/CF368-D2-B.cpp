@@ -1,60 +1,80 @@
-    #include <iostream>
-    #include <string>
-    #include <set>
-    #include <map>
-    #include <vector>
-    #include <math.h>
-    #include <algorithm>
-    #include <iomanip>
-    #include <stdio.h>
-    #include <cstring>
-    #include <queue>
-    #include <deque>
+#include<iostream>
+#include<algorithm>
+#include<cmath>
+#include<math.h>
+#include<iomanip>
+#include<string>
+#include<vector>
+#include<set>
+#include<map>
+#include<utility>
+#include<stack>
+#include<queue>
+#include<sstream>
+#include<bitset>
+#include<cstdio>
+#include<stdio.h>
+#include<cstring>
+#include<stdio.h>
+#include<math.h>
+#include<cmath>
 
-    #define  all(v)         ((v).begine()),((v).end())
-    #define  sz(v)	        ((int)(v).size())
-    #define	 clr(v,d)       memset(v,d,sizeof(v))
-    #define  lp(i,n)        for(int i=0; i<n; i++)
-    #define  lpi(i,j,n)     for(int i=j; i<n; i++)
-    #define  lpd(i,j,n)     for(int i=j; i>=n; i--)
-    #define PI 3.14159265359
-    const double E = 1e-12;
-    typedef  long long ll;
-    typedef  long double ld;
-    using namespace std;
-    void file()
+using namespace std;
+typedef long long int ll;
+typedef vector<ll>vl;
+typedef long double ld;
+
+#define cn(n)  scanf("%d", &n)
+#define FileIn(file) freopen(file".inp", "r", stdin)
+#define FileOut(file) freopen(file".out", "w", stdout)
+#define F(i, a, b) for (int i=a; i<=b; i++)
+#define rep(i, n) for (int i=0; i<n; i++)
+#define Fill(ar, val) memset(ar, val, sizeof(ar))
+#define bit(n) (1<<(n))
+#define   fn           "\n"
+//#define PI  3.14159265358979323846
+ll gcd(ll a, ll b)
+{
+    if (b == 0)
     {
-        freopen("in.txt", "r", stdin);
-        freopen("out.txt", "w", stdout);
+        return a;
     }
-    void Abdo(){
-        std::ios_base::sync_with_stdio(0);
-        cin.tie(NULL);
-        cout.tie(NULL);
-    }
-int a[(int)(1e6)];
-int main() {
-Abdo();
+    return gcd(b, a % b);
+}
+void Abdo()
+{
+    std::ios_base::sync_with_stdio(0);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+//3.141592653589793238462643 38327950288419716939937510582097494459;
+int dx[]= {0, -1, -1, -1, 0, 1, 1,  1};
+int dy[]= {-1, -1,  0,  1, 1, 1, 0, -1};
+const ld EPS = 1e-9, PI = 3.1415926535897932384626433832795;
+
+const long long N = 1e5 + 5, M = 1e5 +5, OO = 0x3f3f3f3f , MOD = 1e9+7;
 
 
+int n , m , q ,a[N] , frq[N] ,ans[N];
+int main()
+{
+	cn(n);
+	cn(m);
+	F(i,1,n)cin>>a[i];
+	for(int i=n; i>0; i--){
+		if(!frq[a[i]]){
+			ans[i] = ans[i+1]+1;
+			frq[a[i]]++;
+		}
+		else{
+			ans[i] = ans[i+1];
+		}
+	}
 
+	while(m--){
+		cin>>q;
+		cout<<ans[q]<<endl;
+	}
 
-
-
-
- int n,m,x;
-    cin >> n >> m;
-    int arr[n+1];
-    set<int> st;
-    for (int i=1 ; i<=n ; i++)
-        cin >> arr[i];
-    for (int i=n ; i>=1 ; i--)
-        st.insert(arr[i]),a[i]=st.size();
-    for (int i=0 ; i<m ; i++)
-        cin >> x,cout <<a[x] << endl;
-
-
-
-
-    return 0;
-    }
+return 0;
+}
